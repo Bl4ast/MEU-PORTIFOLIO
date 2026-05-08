@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bl4ast | Immersive Web Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="container-nav">
+            <div class="logo">Bl4<span>ast</span></div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#portfolio">Sistemas</a></li>
+                <li><a href="#precos">Valores</a></li>
+                <li><a href="#contato" class="btn-primary">Iniciar Conexão</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero container">
+        <div class="hero-text">
+            <span class="subtitle">[ STATUS: DISPONÍVEL PARA COMISSÕES ]</span>
+            <h1>FORMS PERSONALIZADOS, SITE PARA LORES, ENIGMAS, PORTIFÓLIO E <span>TUDO O QUE PRECISAR!</span></h1>
+            <p>Crio sites de todos os tamanhos, dos mais simples aos mais complexos. Mas, antes de fecharmos, prefiro bater um papo com você para entender sua ideia e definir um orçamento justo que caiba no seu bolso.</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn-primary">Acessar Amostras</a>
+                <a href="#precos" class="btn-secondary">Tabela de Preços</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio container">
+        <div class="section-title">
+            <h2>Projetos Base</h2>
+            <p>Amostras.</p>
+        </div>
+
+        <div class="projects-grid" id="projetos-container">
+            
+        </div>
+    </section>
+
+    <section id="precos" class="prices-section bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Custo Operacional</h2>
+                <p>Sem surpresas. Você paga pelo tempo de desenvolvimento.</p>
+            </div>
+
+            <div class="price-info-cards">
+                <div class="info-card">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>Base: R$ 5,00 / Hora</h3>
+                    <p>Valor fixo por hora de código escrito. Sistemas comuns levam, em média, 8 horas de desenvolvimento pesado.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <h3>Manutenção & Updates</h3>
+                    <p>Lançou mecânica nova no RPG? Mudou a Lore? Qualquer atualização pós-entrega é cobrada com base nas horas de ajuste.</p>
+                </div>
+            </div>
+
+            <div class="calculator-box">
+                <h3>Simular Custo do Sistema</h3>
+                <p>Estime as horas necessárias para o seu projeto:</p>
+                
+                <div class="calculator-controls">
+                    <button id="btn-minus" class="calc-btn">-</button>
+                    <div class="hours-display"><span id="hours-count">8</span> Horas</div>
+                    <button id="btn-plus" class="calc-btn">+</button>
+                </div>
+
+                <div class="total-display">
+                    Estimativa: <span id="total-price">R$ 40,00</span>
+                </div>
+                <p class="calc-note">*Projetos complexos com banco de dados ou painel de login requerem mais horas de desenvolvimento.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contact container">
+        <div class="contact-box">
+            <div class="discord-icon-large">
+                <i class="fa-brands fa-discord"></i>
+            </div>
+            <h2>Conexão Segura via Discord</h2>
+            <p>Todo o envio de prévias, testes e negociação é feito no privado.</p>
+            
+            <div class="discord-copy-container">
+                <input type="text" id="discord-username" value="bl4ast" readonly>
+                <button id="btn-copy" class="btn-primary">Copiar Tag <i class="fa-regular fa-copy"></i></button>
+            </div>
+            <span id="copy-message">Tag copiada com sucesso.</span>
+
+            <a href="https://discord.com/users/bl4ast" target="_blank" class="btn-discord-direct">
+                Forçar conexão direta no Discord <i class="fa-solid fa-terminal"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Bl4ast.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
