@@ -4,10 +4,270 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bl4ast | Immersive Web Developer</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+/* ==========================================
+   CONFIGURAÇÕES GLOBAIS - BL4AST EDITION
+   ========================================== */
+:root {
+    --primary: #ff0033;      /* Vermelho Vibrante de Elite */
+    --primary-hover: #cc0029;     /* Vermelho Hover */
+    --bg-dark: #030303;           /* Preto absoluto absoluto */
+    --bg-card: #0a0a0a;           /* Preto ligeiramente cinza dos cards */
+    --bg-light: #0d0d0d;          /* Cinza muito escuro de seções secundárias */
+    --text-pure: #ffffff;         /* Texto Branco Puro */
+    --text-muted: #888888;         /* Texto Cinza Suave */
+    --border-color: #1a1a1a;      /* Cor de borda sutil */
+    
+    /* Brilho Vermelho Característico */
+    --glow: 0 0 15px rgba(255, 0, 51, 0.4); 
+    --transition: all 0.2s ease-in-out;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-pure);
+    line-height: 1.6;
+}
+
+/* Espaçamento Inteligente */
+.container { max-width: 1000px; margin: 0 auto; padding: 100px 20px; }
+.container-nav { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+a { text-decoration: none; color: inherit; }
+
+/* Navegação */
+header { background-color: rgba(3, 3, 3, 0.95); border-bottom: 1px solid var(--border-color); position: fixed; width: 100%; top: 0; z-index: 100; backdrop-filter: blur(5px); }
+.logo { font-size: 28px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+.logo span { color: var(--primary); text-shadow: var(--glow); }
+.nav-links { display: flex; gap: 30px; list-style: none; font-weight: 600; text-transform: uppercase; font-size: 13px; align-items: center; }
+.nav-links a:hover { color: var(--primary); }
+.menu-toggle { display: none; font-size: 24px; cursor: pointer; }
+
+/* Botões Estilizados */
+.btn-primary { background: var(--primary); color: #fff; padding: 12px 24px; border: 1px solid var(--primary); border-radius: 2px; font-weight: bold; text-transform: uppercase; cursor: pointer; transition: var(--transition); box-shadow: var(--glow); }
+.btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
+.btn-secondary { background: transparent; color: var(--text-pure); padding: 12px 24px; border: 1px solid var(--border-color); border-radius: 2px; font-weight: bold; text-transform: uppercase; transition: var(--transition); }
+.btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+
+/* Seção Hero */
+.hero { text-align: center; padding-top: 180px; }
+.subtitle { font-family: monospace; color: var(--primary); font-size: 14px; border: 1px solid rgba(255,0,51,0.3); padding: 6px 15px; display: inline-block; margin-bottom: 25px; background: rgba(255,0,51,0.05); }
+.hero h1 { font-size: 52px; font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; }
+.hero h1 span { color: var(--primary); text-shadow: var(--glow); }
+.hero p { color: var(--text-muted); font-size: 18px; max-width: 700px; margin: 0 auto 40px auto; }
+.hero-buttons { display: flex; justify-content: center; gap: 20px; }
+
+/* Títulos das Seções */
+.section-title { text-align: center; margin-bottom: 60px; }
+.section-title h2 { font-size: 32px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
+.section-title p { color: var(--text-muted); }
+
+/* Grid de Projetos */
+.projects-grid, .price-info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.project-card, .info-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden; transition: var(--transition); position: relative; }
+.project-card:hover, .info-card:hover { border-color: var(--primary); box-shadow: var(--glow); transform: translateY(-5px); }
+
+/* Informações do Projeto */
+.project-info { padding: 25px; position: relative; z-index: 20; /* Garante que o texto fique acima do Iframe */ }
+.project-info h3 { margin-bottom: 10px; font-size: 20px; text-transform: uppercase; font-weight: 800; }
+.project-info p { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; }
+.tags { display: flex; gap: 10px; flex-wrap: wrap; }
+.tags span { background: rgba(255,0,51,0.1); color: var(--primary); padding: 4px 10px; font-size: 11px; font-weight: bold; text-transform: uppercase; border: 1px solid rgba(255,0,51,0.2); }
+
+/* ==========================================
+   MINIATURAS AO VIVO (IFRAMES) COM ZOOM
+   ========================================== */
+
+/* Contêiner de corte fixo */
+/* ==========================================
+   MINIATURAS AO VIVO (IFRAMES) ADAPTÁVEIS
+   ========================================== */
+
+.iframe-container {
+    width: 100%;
+    height: 220px; /* Aumentei de leve para mostrar mais da sua ficha */
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.iframe-thumb {
+    /* A MÁGICA DA ADAPTAÇÃO AQUI: */
+    /* Força o site a renderizar num tamanho 2.5x maior que a largura do card */
+    width: 250%;
+    height: 250%;
+    
+    /* Encolhe exatamente na mesma proporção (1 dividido por 2.5 = 0.4) 
+       Isso faz o site caber 100% na largura do card, sem cortar as laterais! */
+    transform: scale(0.4); 
+    transform-origin: top left;
+    
+    border: none;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.iframe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.15); /* Escurece de leve para dar estilo */
+}
+
+/* O resto continua igual... */
+
+/* Botões de Acesso e OFF */
+.btn-acesso { display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; font-size: 12px; font-weight: 900; text-transform: uppercase; color: var(--primary); transition: var(--transition); }
+.btn-acesso:hover { color: var(--primary-hover); transform: translateX(5px); }
+.btn-acesso-off { display: inline-block; margin-top: 15px; font-size: 12px; font-weight: bold; text-transform: uppercase; color: var(--text-muted); font-family: monospace; }
+.project-img { height: 200px; display: flex; justify-content: center; align-items: center; font-weight: 900; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
+.bg-enigma { background: linear-gradient(135deg, #100, #220); }
+
+/* ... (Preços, Contato e Responsividade permanecem iguais) ... */
+.bg-light { background-color: var(--bg-light); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+.price-info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 50px; }
+.info-card { padding: 40px 30px; text-align: center; }
+.info-card i { font-size: 36px; color: var(--primary); margin-bottom: 20px; text-shadow: var(--glow); }
+.calculator-box { background: var(--bg-dark); border: 1px solid var(--primary); padding: 50px; text-align: center; margin-top: 50px; box-shadow: var(--glow); border-radius: 4px; }
+.calculator-box h3 { text-transform: uppercase; font-size: 24px; margin-bottom: 10px; font-weight: 800; }
+.calculator-box p { color: var(--text-muted); margin-bottom: 25px; }
+.calculator-controls { display: flex; justify-content: center; align-items: center; gap: 30px; margin: 30px 0; }
+.calc-btn { width: 50px; height: 50px; background: #000; color: #fff; border: 1px solid var(--border-color); font-size: 24px; cursor: pointer; transition: var(--transition); }
+.calc-btn:hover { border-color: var(--primary); color: var(--primary); box-shadow: var(--glow); }
+.hours-display { font-size: 32px; font-weight: 900; }
+.total-display { font-size: 36px; font-weight: 900; color: var(--primary); text-shadow: var(--glow); text-transform: uppercase; }
+.calc-note { font-size: 12px; color: var(--text-muted); margin-top: 20px; font-style: italic; }
+.contact-box { text-align: center; background: var(--bg-card); padding: 60px 40px; border: 1px solid var(--border-color); border-radius: 4px; }
+.discord-icon-large { font-size: 60px; color: #5865F2; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(88,101,242,0.4)); }
+.contact-box h2 { font-size: 32px; margin-bottom: 15px; text-transform: uppercase; font-weight: 800; }
+.contact-box p { color: var(--text-muted); margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.discord-copy-container { display: flex; max-width: 500px; margin: 30px auto 10px auto; gap: 10px; }
+.discord-copy-container input { flex-grow: 1; background: #000; border: 1px solid var(--border-color); color: #fff; padding: 15px; font-family: monospace; font-size: 18px; text-align: center; }
+#copy-message { display: none; color: #00ff66; font-size: 14px; font-weight: bold; }
+.btn-discord-direct { display: inline-block; margin-top: 30px; color: var(--text-muted); font-size: 14px; text-decoration: underline; }
+.btn-discord-direct:hover { color: #5865F2; }
+footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 12px; text-transform: uppercase; font-family: monospace; }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+    .hero h1 { font-size: 36px; }
+    .hero-buttons, .discord-copy-container { flex-direction: column; }
+    .btn-primary, .discord-copy-container input { width: 100%; }
+    .iframe-thumb { transform: scale(0.6) translate(-100px, -40px); /* Ajuste de zoom mobile */ }
+}
+
+/* ==========================================
+   TELA DE BLOQUEIO DE DOMÍNIO
+   ========================================== */
+.block-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(3, 3, 3, 0.98);
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.block-card {
+    background: var(--bg-card);
+    border: 2px solid var(--primary);
+    box-shadow: var(--glow);
+    border-radius: 8px;
+    padding: 40px 30px;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    animation: pulseBorder 2s infinite alternate;
+}
+
+.block-icon {
+    font-size: 60px;
+    color: var(--primary);
+    margin-bottom: 20px;
+    filter: drop-shadow(var(--glow));
+}
+
+.block-card h2 {
+    font-size: 32px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.block-card p {
+    color: var(--text-muted);
+    font-size: 16px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.domain-link {
+    display: inline-block;
+    color: #fff;
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    background: rgba(255, 0, 51, 0.1);
+    border: 1px solid rgba(255, 0, 51, 0.3);
+    padding: 12px 24px;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.domain-link:hover {
+    background: var(--primary);
+    box-shadow: var(--glow);
+    transform: translateY(-2px);
+}
+
+@keyframes pulseBorder {
+    0% {
+        border-color: var(--primary);
+        box-shadow: 0 0 15px rgba(255, 0, 51, 0.4);
+    }
+    100% {
+        border-color: #ff3355;
+        box-shadow: 0 0 25px rgba(255, 0, 51, 0.7);
+    }
+}
+
+</style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+<!-- Tela de Bloqueio de Domínio (Tema Bl4ast) -->
+<div id="block-screen" class="block-screen" style="display: none;">
+    <div class="block-card">
+        <div class="block-icon">
+            <i class="fa-solid fa-lock"></i>
+        </div>
+        <h2>Acesso Restrito</h2>
+        <p>Esta aplicação só pode ser executada no domínio oficial:</p>
+        <a href="https://sitesdobl4ast.vercel.app/" class="domain-link">sitesdobl4ast.vercel.app</a>
+    </div>
+</div>
+
 
     <header>
         <nav class="container-nav">
@@ -39,6 +299,7 @@
     <section id="portfolio" class="portfolio container">
         <div class="section-title">
             <h2>Projetos Base</h2>
+            <p>Amostras.</p>
         </div>
 
         <div class="projects-grid" id="projetos-container">
@@ -108,6 +369,172 @@
         <p>&copy; 2026 Bl4ast.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+
+// Security Gate: Proteção de Domínio Oficial
+(function() {
+    const dominioPermitido = "sitesdobl4ast.vercel.app";
+    if (window.location.hostname !== dominioPermitido && window.location.hostname !== "") {
+        document.addEventListener("DOMContentLoaded", () => {
+            const blockScreen = document.getElementById("block-screen");
+            if (blockScreen) {
+                blockScreen.style.display = "flex";
+                document.body.style.overflow = "hidden";
+            }
+        });
+        window.addEventListener("load", () => {
+            const blockScreenEl = document.getElementById("block-screen");
+            if (blockScreenEl) {
+                const allowedHTML = blockScreenEl.outerHTML;
+                document.body.innerHTML = allowedHTML;
+                document.getElementById("block-screen").style.display = "flex";
+                document.body.style.overflow = "hidden";
+            }
+        });
+    }
+})();
+
+const meusProjetos = [
+   {
+        titulo: "Automação de RPG",
+        link: "https://fichaeitoporbl4ast.vercel.app/", 
+        descricao: "Fichas dinâmicas que fazem o trabalho pesado. Cálculo de status em tempo real.",
+        tags: ["Lógica", "Automação","Javascript","CSS"]
+    },
+    {
+        titulo: "Portfólio",
+        link: "https://araraverificaisso.vercel.app/", 
+        descricao: "Portfólio para comissões de skins de Minecraft.",
+        tags: ["Design", "Portfólio","Javascript","CSS"]
+    },
+    {
+        titulo: "Pequeno ARG",
+        link: "https://jornalcamila.vercel.app/", 
+        descricao: "Puzzles em sequência contando uma história misteriosa.",
+        tags: ["Puzzles", "Imersão","Javascript","CSS"]
+    },
+    {
+        titulo: "SITE DE LORES PARA SMP",
+        link: "https://personagem-para-portifolio.vercel.app/", 
+        descricao: "Sites de lore únicos e totalmente personalizados, perfeito para você passar naquele SMP que sempre quis.",
+        tags: ["Puzzles", "Imersão","Javascript","CSS"]
+    }
+
+];
+
+// ==========================================
+// RENDERIZADOR AUTOMÁTICO DE PROJETOS
+// ==========================================
+function carregarProjetos() {
+    const container = document.getElementById('projetos-container');
+    container.innerHTML = ''; 
+
+    meusProjetos.forEach(projeto => {
+        const tagsHtml = projeto.tags.map(tag => `<span>${tag}</span>`).join('');
+        
+        // Se tem link, renderiza o Iframe (Miniatura ao vivo) e o Botão.
+        let midiaHTML = '';
+        let botaoAcesso = '';
+
+        if (projeto.link !== "") {
+            midiaHTML = `
+                <div class="iframe-container">
+                    <div class="iframe-overlay"></div>
+                    <iframe src="${projeto.link}" class="iframe-thumb" scrolling="no" tabindex="-1"></iframe>
+                </div>
+            `;
+            botaoAcesso = `<a href="${projeto.link}" target="_blank" class="btn-acesso">Acessar Sistema <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
+        } else {
+            // Se não tiver link (ainda não postou ou é privado)
+            midiaHTML = `
+                <div class="project-img bg-enigma">
+                    <span>[ ARQUIVO OFFLINE ]</span>
+                </div>
+            `;
+            botaoAcesso = `<span class="btn-acesso-off">Acesso Restrito</span>`;
+        }
+
+        const cardHTML = `
+            <div class="project-card">
+                ${midiaHTML}
+                <div class="project-info">
+                    <h3>${projeto.titulo}</h3>
+                    <p>${projeto.descricao}</p>
+                    <div class="tags">
+                        ${tagsHtml}
+                    </div>
+                    ${botaoAcesso}
+                </div>
+            </div>
+        `;
+
+        container.innerHTML += cardHTML;
+    });
+}
+
+carregarProjetos();
+
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-links');
+
+mobileMenu.addEventListener('click', () => {
+    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    if(navLinks.style.display === 'flex') {
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '70px';
+        navLinks.style.left = '0';
+        navLinks.style.width = '100%';
+        navLinks.style.backgroundColor = '#000000';
+        navLinks.style.padding = '20px';
+        navLinks.style.borderBottom = '1px solid #1a1a1a';
+    }
+});
+
+// --- Lógica da Calculadora Dinâmica de Preços ---
+let hours = 8; // Começa na estimativa padrão de 8 horas
+const valorHora = 5; // R$ 5,00 por hora
+
+const hoursCountEl = document.getElementById('hours-count');
+const totalPriceEl = document.getElementById('total-price');
+const btnMinus = document.getElementById('btn-minus');
+const btnPlus = document.getElementById('btn-plus');
+
+function atualizarCalculadora() {
+    hoursCountEl.textContent = hours;
+    const custoEstimado = hours * valorHora;
+    totalPriceEl.textContent = `R$ ${custoEstimado.toFixed(2).replace('.', ',')}`;
+}
+
+btnPlus.addEventListener('click', () => {
+    hours++;
+    atualizarCalculadora();
+});
+
+btnMinus.addEventListener('click', () => {
+    if (hours > 1) { // Garante que a simulação não fique em zero ou negativa
+        hours--;
+        atualizarCalculadora();
+    }
+});
+
+// --- Sistema "Copiar Usuário" do Discord ---
+const btnCopy = document.getElementById('btn-copy');
+const discordInput = document.getElementById('discord-username');
+const copyMessage = document.getElementById('copy-message');
+
+btnCopy.addEventListener('click', () => {
+    // Seleciona o texto e executa o comando de cópia
+    discordInput.select();
+    discordInput.setSelectionRange(0, 99999); // Suporte para mobile
+    navigator.clipboard.writeText(discordInput.value);
+
+    // Exibe aviso visual temporário de sucesso
+    copyMessage.style.display = 'block';
+    setTimeout(() => {
+        copyMessage.style.display = 'none';
+    }, 2500);
+});
+</script>
 </body>
 </html>
