@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bl4ast | Port</title>
+    <title>Bl4ast | Portfolio </title>
     <style>
 /* ==========================================
    CONFIGURAÇÕES GLOBAIS - BL4AST EDITION
@@ -11,14 +11,14 @@
 :root {
     --primary: #ff0033;      /* Vermelho Vibrante de Elite */
     --primary-hover: #cc0029;     /* Vermelho Hover */
-    --bg-dark: #030303;           /* Preto absoluto absoluto */
-    --bg-card: #0a0a0a;           /* Preto ligeiramente cinza dos cards */
-    --bg-light: #0d0d0d;          /* Cinza muito escuro de seções secundárias */
+    --bg-dark: #030303;           /* Preto absoluto */
+    --bg-card: #0a0a0a;           /* Preto cinza dos cards */
+    --bg-light: #0d0d0d;          /* Cinza escuro de seções */
     --text-pure: #ffffff;         /* Texto Branco Puro */
     --text-muted: #888888;         /* Texto Cinza Suave */
     --border-color: #1a1a1a;      /* Cor de borda sutil */
     
-    /* Brilho Vermelho Característico */
+    /* Brilho Vermelho */
     --glow: 0 0 15px rgba(255, 0, 51, 0.4); 
     --transition: all 0.2s ease-in-out;
 }
@@ -33,8 +33,7 @@ body {
     line-height: 1.6;
 }
 
-/* Espaçamento Inteligente */
-.container { max-width: 1000px; margin: 0 auto; padding: 100px 20px; }
+.container { max-width: 1000px; margin: 0 auto; padding: 80px 20px; }
 .container-nav { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; height: 80px; }
 a { text-decoration: none; color: inherit; }
 
@@ -46,93 +45,56 @@ header { background-color: rgba(3, 3, 3, 0.95); border-bottom: 1px solid var(--b
 .nav-links a:hover { color: var(--primary); }
 .menu-toggle { display: none; font-size: 24px; cursor: pointer; }
 
-/* Botões Estilizados */
+/* Botões */
 .btn-primary { background: var(--primary); color: #fff; padding: 12px 24px; border: 1px solid var(--primary); border-radius: 2px; font-weight: bold; text-transform: uppercase; cursor: pointer; transition: var(--transition); box-shadow: var(--glow); }
 .btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
 .btn-secondary { background: transparent; color: var(--text-pure); padding: 12px 24px; border: 1px solid var(--border-color); border-radius: 2px; font-weight: bold; text-transform: uppercase; transition: var(--transition); }
 .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
 
-/* Seção Hero */
+/* Hero */
 .hero { text-align: center; padding-top: 180px; }
 .subtitle { font-family: monospace; color: var(--primary); font-size: 14px; border: 1px solid rgba(255,0,51,0.3); padding: 6px 15px; display: inline-block; margin-bottom: 25px; background: rgba(255,0,51,0.05); }
-.hero h1 { font-size: 52px; font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; }
+.hero h1 { font-size: 48px; font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; }
 .hero h1 span { color: var(--primary); text-shadow: var(--glow); }
 .hero p { color: var(--text-muted); font-size: 18px; max-width: 700px; margin: 0 auto 40px auto; }
 .hero-buttons { display: flex; justify-content: center; gap: 20px; }
 
-/* Títulos das Seções */
+/* Títulos */
 .section-title { text-align: center; margin-bottom: 60px; }
 .section-title h2 { font-size: 32px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
 .section-title p { color: var(--text-muted); }
 
-/* Grid de Projetos */
+/* Skills Grid */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+.skill-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 25px 20px; border-radius: 4px; text-align: center; transition: var(--transition); }
+.skill-card:hover { border-color: var(--primary); box-shadow: var(--glow); transform: translateY(-3px); }
+.skill-card i { font-size: 32px; color: var(--primary); margin-bottom: 15px; text-shadow: var(--glow); }
+.skill-card h3 { font-size: 18px; text-transform: uppercase; font-weight: 800; margin-bottom: 8px; }
+.skill-card p { font-size: 12px; color: var(--text-muted); }
+
+/* Projetos */
 .projects-grid, .price-info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 .project-card, .info-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden; transition: var(--transition); position: relative; }
 .project-card:hover, .info-card:hover { border-color: var(--primary); box-shadow: var(--glow); transform: translateY(-5px); }
-
-/* Informações do Projeto */
-.project-info { padding: 25px; position: relative; z-index: 20; /* Garante que o texto fique acima do Iframe */ }
+.project-info { padding: 25px; position: relative; z-index: 20; }
 .project-info h3 { margin-bottom: 10px; font-size: 20px; text-transform: uppercase; font-weight: 800; }
 .project-info p { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; }
 .tags { display: flex; gap: 10px; flex-wrap: wrap; }
 .tags span { background: rgba(255,0,51,0.1); color: var(--primary); padding: 4px 10px; font-size: 11px; font-weight: bold; text-transform: uppercase; border: 1px solid rgba(255,0,51,0.2); }
 
-/* ==========================================
-   MINIATURAS AO VIVO (IFRAMES) COM ZOOM
-   ========================================== */
+/* Iframes Adaptáveis */
+.iframe-container { width: 100%; height: 220px; overflow: hidden; position: relative; background-color: #000; border-bottom: 1px solid var(--border-color); }
+.iframe-thumb { width: 250%; height: 250%; transform: scale(0.4); transform-origin: top left; border: none; pointer-events: none; position: absolute; top: 0; left: 0; }
+.iframe-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: rgba(0, 0, 0, 0.15); }
 
-/* Contêiner de corte fixo */
-/* ==========================================
-   MINIATURAS AO VIVO (IFRAMES) ADAPTÁVEIS
-   ========================================== */
-
-.iframe-container {
-    width: 100%;
-    height: 220px; /* Aumentei de leve para mostrar mais da sua ficha */
-    overflow: hidden;
-    position: relative;
-    background-color: #000;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.iframe-thumb {
-    /* A MÁGICA DA ADAPTAÇÃO AQUI: */
-    /* Força o site a renderizar num tamanho 2.5x maior que a largura do card */
-    width: 250%;
-    height: 250%;
-    
-    /* Encolhe exatamente na mesma proporção (1 dividido por 2.5 = 0.4) 
-       Isso faz o site caber 100% na largura do card, sem cortar as laterais! */
-    transform: scale(0.4); 
-    transform-origin: top left;
-    
-    border: none;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.iframe-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.15); /* Escurece de leve para dar estilo */
-}
-
-/* O resto continua igual... */
-
-/* Botões de Acesso e OFF */
+/* Botões de Acesso */
 .btn-acesso { display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; font-size: 12px; font-weight: 900; text-transform: uppercase; color: var(--primary); transition: var(--transition); }
 .btn-acesso:hover { color: var(--primary-hover); transform: translateX(5px); }
 .btn-acesso-off { display: inline-block; margin-top: 15px; font-size: 12px; font-weight: bold; text-transform: uppercase; color: var(--text-muted); font-family: monospace; }
 .project-img { height: 200px; display: flex; justify-content: center; align-items: center; font-weight: 900; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
 .bg-enigma { background: linear-gradient(135deg, #100, #220); }
 
-/* ... (Preços, Contato e Responsividade permanecem iguais) ... */
+/* Preços & Calculadora */
 .bg-light { background-color: var(--bg-light); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
 .price-info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 50px; }
 .info-card { padding: 40px 30px; text-align: center; }
@@ -146,6 +108,8 @@ header { background-color: rgba(3, 3, 3, 0.95); border-bottom: 1px solid var(--b
 .hours-display { font-size: 32px; font-weight: 900; }
 .total-display { font-size: 36px; font-weight: 900; color: var(--primary); text-shadow: var(--glow); text-transform: uppercase; }
 .calc-note { font-size: 12px; color: var(--text-muted); margin-top: 20px; font-style: italic; }
+
+/* Contato */
 .contact-box { text-align: center; background: var(--bg-card); padding: 60px 40px; border: 1px solid var(--border-color); border-radius: 4px; }
 .discord-icon-large { font-size: 60px; color: #5865F2; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(88,101,242,0.4)); }
 .contact-box h2 { font-size: 32px; margin-bottom: 15px; text-transform: uppercase; font-weight: 800; }
@@ -161,102 +125,30 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-c
 @media (max-width: 768px) {
     .nav-links { display: none; }
     .menu-toggle { display: block; }
-    .hero h1 { font-size: 36px; }
+    .hero h1 { font-size: 34px; }
     .hero-buttons, .discord-copy-container { flex-direction: column; }
     .btn-primary, .discord-copy-container input { width: 100%; }
-    .iframe-thumb { transform: scale(0.6) translate(-100px, -40px); /* Ajuste de zoom mobile */ }
+    .iframe-thumb { transform: scale(0.6) translate(-100px, -40px); }
 }
 
-/* ==========================================
-   TELA DE BLOQUEIO DE DOMÍNIO
-   ========================================== */
-.block-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(3, 3, 3, 0.98);
-    z-index: 999999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    backdrop-filter: blur(10px);
-}
-
-.block-card {
-    background: var(--bg-card);
-    border: 2px solid var(--primary);
-    box-shadow: var(--glow);
-    border-radius: 8px;
-    padding: 40px 30px;
-    text-align: center;
-    max-width: 500px;
-    width: 100%;
-    animation: pulseBorder 2s infinite alternate;
-}
-
-.block-icon {
-    font-size: 60px;
-    color: var(--primary);
-    margin-bottom: 20px;
-    filter: drop-shadow(var(--glow));
-}
-
-.block-card h2 {
-    font-size: 32px;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: #fff;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-}
-
-.block-card p {
-    color: var(--text-muted);
-    font-size: 16px;
-    margin-bottom: 25px;
-    line-height: 1.5;
-}
-
-.domain-link {
-    display: inline-block;
-    color: #fff;
-    font-family: monospace;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    background: rgba(255, 0, 51, 0.1);
-    border: 1px solid rgba(255, 0, 51, 0.3);
-    padding: 12px 24px;
-    border-radius: 4px;
-    transition: var(--transition);
-}
-
-.domain-link:hover {
-    background: var(--primary);
-    box-shadow: var(--glow);
-    transform: translateY(-2px);
-}
+/* Tela de Bloqueio de Domínio */
+.block-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(3, 3, 3, 0.98); z-index: 999999; display: flex; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(10px); }
+.block-card { background: var(--bg-card); border: 2px solid var(--primary); box-shadow: var(--glow); border-radius: 8px; padding: 40px 30px; text-align: center; max-width: 500px; width: 100%; animation: pulseBorder 2s infinite alternate; }
+.block-icon { font-size: 60px; color: var(--primary); margin-bottom: 20px; filter: drop-shadow(var(--glow)); }
+.block-card h2 { font-size: 32px; font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 15px; letter-spacing: 1px; }
+.block-card p { color: var(--text-muted); font-size: 16px; margin-bottom: 25px; line-height: 1.5; }
+.domain-link { display: inline-block; color: #fff; font-family: monospace; font-size: 18px; font-weight: bold; text-decoration: none; background: rgba(255, 0, 51, 0.1); border: 1px solid rgba(255, 0, 51, 0.3); padding: 12px 24px; border-radius: 4px; transition: var(--transition); }
+.domain-link:hover { background: var(--primary); box-shadow: var(--glow); transform: translateY(-2px); }
 
 @keyframes pulseBorder {
-    0% {
-        border-color: var(--primary);
-        box-shadow: 0 0 15px rgba(255, 0, 51, 0.4);
-    }
-    100% {
-        border-color: #ff3355;
-        box-shadow: 0 0 25px rgba(255, 0, 51, 0.7);
-    }
+    0% { border-color: var(--primary); box-shadow: 0 0 15px rgba(255, 0, 51, 0.4); }
+    100% { border-color: #ff3355; box-shadow: 0 0 25px rgba(255, 0, 51, 0.7); }
 }
-
 </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<!-- Tela de Bloqueio de Domínio (Tema Bl4ast) -->
 <div id="block-screen" class="block-screen" style="display: none;">
     <div class="block-card">
         <div class="block-icon">
@@ -268,12 +160,12 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-c
     </div>
 </div>
 
-
     <header>
         <nav class="container-nav">
             <div class="logo">Bl4<span>ast</span></div>
             <ul class="nav-links">
                 <li><a href="#inicio">Início</a></li>
+                <li><a href="#skills">Tecnologias</a></li>
                 <li><a href="#portfolio">Sistemas</a></li>
                 <li><a href="#precos">Valores</a></li>
                 <li><a href="#contato" class="btn-primary">Iniciar Conexão</a></li>
@@ -287,24 +179,70 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-c
     <section id="inicio" class="hero container">
         <div class="hero-text">
             <span class="subtitle">[ STATUS: DISPONÍVEL PARA COMISSÕES ]</span>
-            <h1>FORMS PERSONALIZADOS, SITE PARA LORES, ENIGMAS, PORTIFÓLIO E <span>TUDO O QUE PRECISAR!</span></h1>
-            <p>Crio sites de todos os tamanhos, dos mais simples aos mais complexos. Mas, antes de fecharmos, prefiro bater um papo com você para entender sua ideia e definir um orçamento justo que caiba no seu bolso.</p>
+            <h1>FORMS, LORES DE RPG, ENIGMAS BLINDADOS E <span>APPS SOB MEDIDA!</span></h1>
+            <p>Desenvolvedor focado em ecossistemas interativos de RPG, SMP e mais.</p>
             <div class="hero-buttons">
-                <a href="#portfolio" class="btn-primary">Acessar Amostras</a>
-                <a href="#precos" class="btn-secondary">Tabela de Preços</a>
+                <a href="#portfolio" class="btn-primary">Acessar Portfólio</a>
+                <a href="#skills" class="btn-secondary">Habilidades</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tecnologias & Arsenal</h2>
+                <p>O conjunto de ferramentas que utilizo para criar sistemas rápidos, aplicativos modernos e código seguro.</p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fa-brands fa-js" style="color: #f7df1e;"></i>
+                    <h3>TypeScript</h3>
+                    <p>Desenvolvimento web e mobile estritamente tipado, garantindo robustez e impedindo bugs lógicos antes do deploy.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-react" style="color: #61dafb;"></i>
+                    <h3>React</h3>
+                    <p>Desenvolvimento de interfaces dinâmicas, painéis em tempo real e sistemas de inventário interativos para web.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-python" style="color: #3776ab;"></i>
+                    <h3>Python</h3>
+                    <p>Criação de back-ends velozes e scripts de automação ou auditoria.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-gears" style="color: #dea584;"></i>
+                    <h3>Rust</h3>
+                    <p>Aplicações desktop e microsserviços com segurança de memória e performance inacreditável.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-golang" style="color: #00add8;"></i>
+                    <h3>Go (Golang)</h3>
+                    <p>Ferramentas de rede, APIs de alta velocidade e escalabilidade de servidores de forma eficiente.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-android" style="color: #3ddc84;"></i>
+                    <h3>Kotlin</h3>
+                    <p>Desenvolvimento nativo para Android com alto rendimento.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-terminal" style="color: #4eed30;"></i>
+                    <h3>Bash & Linux</h3>
+                    <p>Automação de servidores Linux, scripts de segurança e gerenciamento seguro de instâncias na nuvem.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="portfolio" class="portfolio container">
         <div class="section-title">
-            <h2>Projetos Base</h2>
-            <p>Amostras.</p>
+            <h2>Sistemas & Demonstrações</h2>
+            <p>Projetos e amostras de sistemas desenvolvidos sob demanda.</p>
         </div>
 
         <div class="projects-grid" id="projetos-container">
-            
-        </div>
+            </div>
     </section>
 
     <section id="precos" class="prices-section bg-light">
@@ -321,9 +259,9 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-c
                     <p>Valor fixo por hora de código escrito. Sistemas comuns levam, em média, 8 horas de desenvolvimento pesado.</p>
                 </div>
                 <div class="info-card">
-                    <i class="fa-solid fa-screwdriver-wrench"></i>
-                    <h3>Manutenção & Updates</h3>
-                    <p>Lançou mecânica nova no RPG? Mudou a Lore? Qualquer atualização pós-entrega é cobrada com base nas horas de ajuste.</p>
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>Blinds, Updates & Apps</h3>
+                    <p>Proteção de código com Supabase, atualizações de lore ou criação de apps seguem a mesma taxa justa de horas trabalhadas.</p>
                 </div>
             </div>
 
@@ -340,7 +278,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-c
                 <div class="total-display">
                     Estimativa: <span id="total-price">R$ 40,00</span>
                 </div>
-                <p class="calc-note">*Projetos complexos com banco de dados ou painel de login requerem mais horas de desenvolvimento.</p>
+                <p class="calc-note">*Projetos complexos com banco de dados, criptografia ou aplicativos requerem mais horas de desenvolvimento.</p>
             </div>
         </div>
     </section>
@@ -366,11 +304,10 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-c
     </section>
 
     <footer>
-        <p>&copy; 2026 Bl4ast.</p>
+        <p>&copy; 2026 Bl4ast. Todos os direitos reservados.</p>
     </footer>
 
     <script>
-
 // Security Gate: Proteção de Domínio Oficial
 (function() {
     const dominioPermitido = "sitesdobl4ast.vercel.app";
@@ -399,40 +336,35 @@ const meusProjetos = [
         titulo: "Automação de RPG",
         link: "https://fichaeitoporbl4ast.vercel.app/", 
         descricao: "Fichas dinâmicas que fazem o trabalho pesado. Cálculo de status em tempo real.",
-        tags: ["Lógica", "Automação","Javascript","CSS"]
+        tags: ["TypeScript", "React", "CSS"]
     },
     {
-        titulo: "Portfólio",
+        titulo: "Portfólio de Skins",
         link: "https://araraverificaisso.vercel.app/", 
-        descricao: "Portfólio para comissões de skins de Minecraft.",
-        tags: ["Design", "Portfólio","Javascript","CSS"]
+        descricao: "Portfólio rápido e responsivo para encomendas de skins de Minecraft.",
+        tags: ["Front-End", "Performance", "CSS"]
     },
     {
-        titulo: "Pequeno ARG",
+        titulo: "Pequeno ARG / Enigma",
         link: "https://jornalcamila.vercel.app/", 
-        descricao: "Puzzles em sequência contando uma história misteriosa.",
-        tags: ["Puzzles", "Imersão","Javascript","CSS"]
+        descricao: "Puzzles sequenciais contando histórias misteriosas com sistema anti-cheat.",
+        tags: ["Puzzles", "Supabase", "Segurança"]
     },
     {
-        titulo: "SITE DE LORES PARA SMP",
+        titulo: "Sites de Lore para SMP",
         link: "https://personagem-para-portifolio.vercel.app/", 
-        descricao: "Sites de lore únicos e totalmente personalizados, perfeito para você passar naquele SMP que sempre quis.",
-        tags: ["Puzzles", "Imersão","Javascript","CSS"]
+        descricao: "Plataformas de lore totalmente personalizadas para você garantir sua vaga no SMP que quiser.",
+        tags: ["Imersão", "TypeScript", "Design"]
     }
-
 ];
 
-// ==========================================
 // RENDERIZADOR AUTOMÁTICO DE PROJETOS
-// ==========================================
 function carregarProjetos() {
     const container = document.getElementById('projetos-container');
     container.innerHTML = ''; 
 
     meusProjetos.forEach(projeto => {
         const tagsHtml = projeto.tags.map(tag => `<span>${tag}</span>`).join('');
-        
-        // Se tem link, renderiza o Iframe (Miniatura ao vivo) e o Botão.
         let midiaHTML = '';
         let botaoAcesso = '';
 
@@ -445,7 +377,6 @@ function carregarProjetos() {
             `;
             botaoAcesso = `<a href="${projeto.link}" target="_blank" class="btn-acesso">Acessar Sistema <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
         } else {
-            // Se não tiver link (ainda não postou ou é privado)
             midiaHTML = `
                 <div class="project-img bg-enigma">
                     <span>[ ARQUIVO OFFLINE ]</span>
@@ -492,8 +423,8 @@ mobileMenu.addEventListener('click', () => {
 });
 
 // --- Lógica da Calculadora Dinâmica de Preços ---
-let hours = 8; // Começa na estimativa padrão de 8 horas
-const valorHora = 5; // R$ 5,00 por hora
+let hours = 8; 
+const valorHora = 5; // VALOR INTACTO!
 
 const hoursCountEl = document.getElementById('hours-count');
 const totalPriceEl = document.getElementById('total-price');
@@ -512,7 +443,7 @@ btnPlus.addEventListener('click', () => {
 });
 
 btnMinus.addEventListener('click', () => {
-    if (hours > 1) { // Garante que a simulação não fique em zero ou negativa
+    if (hours > 1) { 
         hours--;
         atualizarCalculadora();
     }
@@ -524,12 +455,10 @@ const discordInput = document.getElementById('discord-username');
 const copyMessage = document.getElementById('copy-message');
 
 btnCopy.addEventListener('click', () => {
-    // Seleciona o texto e executa o comando de cópia
     discordInput.select();
-    discordInput.setSelectionRange(0, 99999); // Suporte para mobile
+    discordInput.setSelectionRange(0, 99999); 
     navigator.clipboard.writeText(discordInput.value);
 
-    // Exibe aviso visual temporário de sucesso
     copyMessage.style.display = 'block';
     setTimeout(() => {
         copyMessage.style.display = 'none';
