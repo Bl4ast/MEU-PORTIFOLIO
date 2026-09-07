@@ -12,7 +12,7 @@ const SITE_CONFIG = {
     ],
     portfolio: [
         { titulo: "Automação de RPG", link: "https://fichaeitoporbl4ast.vercel.app/", desc: "" },
-        { titulo: "Forms SMP", link: "https://fichaowenace.vercel.app", desc: "" }
+        { titulo: "Forms SMP", link: "https://imra-e-nyev.vercel.app/", desc: "" }
     ],
     pricing: {
         title: "Preço",
